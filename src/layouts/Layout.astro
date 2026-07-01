@@ -1,0 +1,57 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "Sangeeth Kumar Vasudevan | Portfolio", 
+	description = "Personal portfolio of Sangeeth Kumar Vasudevan, a Software Engineer specializing in Python automation, computer vision, data analytics, and full-stack web development."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content="Sangeeth Kumar Vasudevan, Sangeeth Kumar, sangeeth.uk, sangeeth98, Software Engineer, Python Developer, OpenCV, Automation Scripting, Web Developer" />
+		<meta name="author" content="Sangeeth Kumar Vasudevan" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://sangeeth.uk/" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+		<!-- Dark Mode Inline Restorer to Prevent Flash -->
+		<script is:inline>
+			(function() {
+				const theme = localStorage.getItem('theme') || 
+					(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+				if (theme === 'dark') {
+					document.documentElement.classList.add('dark-mode');
+				} else {
+					document.documentElement.classList.remove('dark-mode');
+				}
+			})();
+		</script>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+

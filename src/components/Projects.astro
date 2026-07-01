@@ -1,0 +1,188 @@
+---
+// Projects.astro: Highlights key software projects
+---
+
+<section id="projects" class="projects-section">
+  <div class="container">
+    <h2 class="section-title">Featured Projects</h2>
+    
+    <div class="projects-grid">
+      
+      <!-- Project 1: Capstone -->
+      <div class="glass-card project-card">
+        <div class="project-header">
+          <span class="project-icon">🏰</span>
+          <span class="project-category">Computer Vision / IoT</span>
+        </div>
+        <h3 class="project-title">Smart Security System</h3>
+        <p class="project-description">
+          A college capstone project tying together OpenCV face detection, an Android app dashboard, and Firebase storage for real-time security alerts.
+        </p>
+        <div class="project-tech">
+          <span>Python</span>
+          <span>OpenCV</span>
+          <span>Firebase</span>
+          <span>Android</span>
+        </div>
+        <a href="https://github.com/sangeeth98/capstone-project" target="_blank" rel="noopener noreferrer" class="project-link">
+          GitHub Repo <span>→</span>
+        </a>
+      </div>
+
+      <!-- Project 2: OpenCV Practice -->
+      <div class="glass-card project-card">
+        <div class="project-header">
+          <span class="project-icon">📸</span>
+          <span class="project-category">Computer Vision</span>
+        </div>
+        <h3 class="project-title">OpenCV Practice</h3>
+        <p class="project-description">
+          Local Python scripts experimenting with edge detection cascades, color-space filtering, and basic webcam video frame processing.
+        </p>
+        <div class="project-tech">
+          <span>Python</span>
+          <span>OpenCV</span>
+          <span>NumPy</span>
+        </div>
+        <a href="https://github.com/sangeeth98/opencv_practice" target="_blank" rel="noopener noreferrer" class="project-link">
+          GitHub Repo <span>→</span>
+        </a>
+      </div>
+
+      <!-- Project 3: Brute Force Zipfiles -->
+      <div class="glass-card project-card">
+        <div class="project-header">
+          <span class="project-icon">🔑</span>
+          <span class="project-category">Security Scripting</span>
+        </div>
+        <h3 class="project-title">Zip Password Utility</h3>
+        <p class="project-description">
+          A simple Python utility that uses wordlist parsing to attempt password recovery on zip archives.
+        </p>
+        <div class="project-tech">
+          <span>Python</span>
+          <span>Zipfile</span>
+        </div>
+        <a href="https://github.com/sangeeth98/brute-force-on-zipfiles" target="_blank" rel="noopener noreferrer" class="project-link">
+          GitHub Repo <span>→</span>
+        </a>
+      </div>
+
+      <!-- Project 4: LearnWeb / ThinkJava -->
+      <div class="glass-card project-card">
+        <div class="project-header">
+          <span class="project-icon">🌱</span>
+          <span class="project-category">Coursework</span>
+        </div>
+        <h3 class="project-title">Web & Object Design</h3>
+        <p class="project-description">
+          Collection of structured college coursework files covering basic ES6 CSS/JS layouts and Java programming templates.
+        </p>
+        <div class="project-tech">
+          <span>HTML/CSS</span>
+          <span>JavaScript</span>
+          <span>Java</span>
+        </div>
+        <a href="https://github.com/sangeeth98/LearnWeb" target="_blank" rel="noopener noreferrer" class="project-link">
+          GitHub Repo <span>→</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    background: transparent;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-5);
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--space-5);
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-3);
+  }
+
+  .project-icon {
+    font-size: 1.8rem;
+  }
+
+  .project-category {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    letter-spacing: 0.05em;
+  }
+
+  .project-title {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--text-main);
+    margin-bottom: var(--space-2);
+  }
+
+  .project-description {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: var(--space-4);
+    flex-grow: 1;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .project-tech span {
+    font-size: 0.8rem;
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--text-muted);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--card-border);
+  }
+
+  html.dark-mode .project-tech span {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .project-link {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: color 0.2s, gap 0.2s;
+  }
+
+  .project-link:hover {
+    color: var(--accent-color);
+    gap: 0.5rem;
+  }
+
+  .project-link span {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+</style>

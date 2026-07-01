@@ -1,0 +1,120 @@
+---
+// Contact.astro: Social contacts and footer sitemap
+---
+
+<section id="contact" class="contact-section">
+  <!-- Glowing lanterns for twilight ambiance -->
+  <div class="lanterns-glow"></div>
+
+  <div class="container">
+    <div class="footer-divider"></div>
+
+    <footer class="sitemap-footer">
+      <!-- Brand / Brief -->
+      <div class="footer-brand">
+        <h4>
+          <span class="logo-icon-wrapper" style="display: inline-flex; align-items: center; margin-right: 6px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-color);"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 1 9.8a7 7 0 0 1-9 8.2z"/><path d="M9 22v-4"/></svg>
+          </span>sangeeth
+        </h4>
+        <p>
+          A software engineer building clean Python automation pipelines,
+          computer vision applications, and responsive web platforms. Inspired
+          by nature and design.
+        </p>
+      </div>
+
+      <!-- Sitemap links -->
+      <div class="footer-col">
+        <h5>Sitemap</h5>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- References and code bases -->
+      <div class="footer-col">
+        <h5>Projects & Links</h5>
+        <ul>
+          <li>
+            <a
+              href="https://github.com/sangeeth98/capstone-project"
+              target="_blank"
+              rel="noopener noreferrer">Smart Security IoT</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/sangeeth98/opencv_practice"
+              target="_blank"
+              rel="noopener noreferrer">OpenCV Practice</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/sangeeth98/brute-force-on-zipfiles"
+              target="_blank"
+              rel="noopener noreferrer">Zip Automation</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/sangeeth98/portfolio"
+              target="_blank"
+              rel="noopener noreferrer">Portfolio Source</a
+            >
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom-bar">
+      <p>
+        © 2026 <strong>Sangeeth Kumar Vasudevan</strong>. Hand-coded with Astro
+        & CSS.
+      </p>
+      <p>
+        Hosted on <strong>GitHub Pages</strong>. Domain mapped to <strong
+          >sangeeth.uk</strong
+        >.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    position: relative;
+    padding-bottom: var(--space-8);
+    background: transparent;
+  }
+
+  .footer-divider {
+    height: 1px;
+    background: var(--card-border);
+    margin: var(--space-4) 0 var(--space-6) 0;
+  }
+
+  /* Decorative glowing elements */
+  .lanterns-glow {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 150px;
+    background: radial-gradient(
+      circle,
+      var(--accent-glow) 0%,
+      rgba(255, 215, 0, 0) 70%
+    );
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.5;
+  }
+</style>

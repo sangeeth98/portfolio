@@ -1,0 +1,260 @@
+---
+// Experience.astro: Timeline of professional experience and skills
+---
+
+<section id="experience" class="experience-section">
+  <div class="container">
+    <h2 class="section-title">Experience & Skills</h2>
+    
+    <div class="experience-layout">
+      <!-- Timeline column -->
+      <div class="timeline">
+        
+        <!-- Experience Item 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="glass-card timeline-card">
+            <span class="role-duration">2021 - Present</span>
+            <h3 class="role-title">Software Engineer (Data & Automation)</h3>
+            <h4 class="company-name">NielsenIQ (NIQ) — Chennai, India</h4>
+            <p class="role-description">
+              Leading the development of automation pipelines, scripting, and backend solutions. Specialized in saving manual operational overhead through Python-based tools and maintaining secure database integrations.
+            </p>
+            <ul class="role-bullet-list">
+              <li>Created robust Python scripts to automate complex data processing tasks.</li>
+              <li>Engineered custom monitoring dashboards using HTML, CSS, and vanilla JS.</li>
+              <li>Optimized SQL queries and database structures to handle large datasets efficiently.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Experience Item 2 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="glass-card timeline-card">
+            <span class="role-duration">2018 - 2021</span>
+            <h3 class="role-title">Full-Stack & Systems Developer</h3>
+            <h4 class="company-name">Academic & Freelance Projects</h4>
+            <p class="role-description">
+              Focused on computer vision applications, automation, and reverse engineering. Contributed to open-source developer tool discussions (SumatraPDF, Joplin, Adobe) and created practical system scripts.
+            </p>
+            <ul class="role-bullet-list">
+              <li>Integrated OpenCV and Face Recognition models for real-time monitoring solutions.</li>
+              <li>Authored local utility scripts for bulk automation and brute-force zip processing.</li>
+              <li>Created lightweight responsive web applications using ES6 Modules and glassmorphic designs.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Skills column -->
+      <div class="skills-panel">
+        <div class="glass-card skills-card">
+          <h3>My Toolkit</h3>
+          <p class="skills-intro">I love using modern, lightweight tools that get the job done without extra weight.</p>
+          
+          <div class="skill-category">
+            <h4>Languages</h4>
+            <div class="skill-tags">
+              <span>Python</span>
+              <span>Java</span>
+              <span>JavaScript (ES6)</span>
+              <span>SQL</span>
+              <span>Bash</span>
+              <span>C++</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Libraries & Databases</h4>
+            <div class="skill-tags">
+              <span>OpenCV</span>
+              <span>Astro</span>
+              <span>Node.js</span>
+              <span>Firebase</span>
+              <span>SQLite</span>
+              <span>MongoDB</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Tools & Frameworks</h4>
+            <div class="skill-tags">
+              <span>Git & GitHub</span>
+              <span>UV (Python PM)</span>
+              <span>VS Code</span>
+              <span>Linux</span>
+              <span>Docker</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience-section {
+    background: transparent;
+  }
+
+  .experience-layout {
+    display: grid;
+    grid-template-columns: 1.3fr 0.9fr;
+    gap: var(--space-7);
+  }
+
+  /* Timeline styling */
+  .timeline {
+    position: relative;
+    border-left: 2px dashed var(--text-muted);
+    padding-left: var(--space-5);
+    margin-left: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .timeline-item {
+    position: relative;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: calc(-1 * var(--space-5) - 9px);
+    top: 24px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    border: 3px solid var(--bg-gradient);
+    box-shadow: 0 0 10px var(--accent-glow);
+  }
+
+  .timeline-card {
+    padding: var(--space-5);
+  }
+
+  .role-duration {
+    display: inline-block;
+    background: var(--accent-glow);
+    color: var(--accent-color);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.2rem 0.8rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: var(--space-2);
+  }
+
+  .role-title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--text-main);
+    margin-bottom: 0.3rem;
+  }
+
+  .company-name {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .role-description {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .role-bullet-list {
+    list-style: none;
+    padding-left: 0.5rem;
+  }
+
+  .role-bullet-list li {
+    position: relative;
+    padding-left: 1.2rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+  }
+
+  .role-bullet-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+  }
+
+  /* Skills Panel styling */
+  .skills-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin-bottom: var(--space-3);
+    border-bottom: 2px solid var(--accent-glow);
+    padding-bottom: 0.4rem;
+    display: inline-block;
+  }
+
+  .skills-intro {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: var(--space-4);
+  }
+
+  .skill-category {
+    margin-bottom: var(--space-4);
+  }
+
+  .skill-category:last-child {
+    margin-bottom: 0;
+  }
+
+  .skill-category h4 {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    color: var(--text-main);
+    margin-bottom: var(--space-2);
+    font-weight: 600;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tags span {
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid var(--card-border);
+    color: var(--text-muted);
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-md);
+    transition: transform 0.2s, background 0.2s, color 0.2s, border-color 0.2s;
+  }
+
+  .skill-tags span:hover {
+    transform: translateY(-2px);
+    background: var(--accent-color);
+    color: #fff;
+    border-color: var(--accent-color);
+  }
+
+  @media (max-width: 900px) {
+    .experience-layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .skills-panel {
+      order: -1;
+    }
+  }
+</style>

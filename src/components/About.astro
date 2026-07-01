@@ -1,0 +1,132 @@
+---
+// About.astro: Sangeeth's Background & Development Philosophy
+---
+
+<section id="about" class="about-section">
+  <div class="container">
+    <h2 class="section-title">About Me</h2>
+    
+    <div class="about-grid">
+      <!-- Story Card -->
+      <div class="glass-card story-card">
+        <h3>My Journey</h3>
+        <p>
+          I am a Software Engineer based in India who views coding as both an engineering discipline and a craft. Since finishing college, I have spent the past five years working on automation scripting, data-driven backends, and full-stack web applications.
+        </p>
+        <p>
+          My passion lies in bridging the gap between raw backend scripting and delightful, human-centric interfaces. I strive to build software that is robust underneath, yet welcoming and simple on the surface.
+        </p>
+        <p>
+          Outside of coding, I draw deep inspiration from hiking through green landscapes, exploring nature, and learning about clean, minimalist design frameworks.
+        </p>
+      </div>
+
+      <!-- Philosophy / Approach -->
+      <div class="glass-card philosophy-card">
+        <h3>My Philosophy</h3>
+        <ul class="value-list">
+          <li>
+            <div class="icon">☘️</div>
+            <div>
+              <strong>Simple Formats</strong>
+              <p>I believe that anything can be achieved in a simple format. I actively avoid unnecessary complexity and over-engineered systems.</p>
+            </div>
+          </li>
+          <li>
+            <div class="icon">🍃</div>
+            <div>
+              <strong>Automation First</strong>
+              <p>If a task is repetitive, it deserves a Python script. I value efficiency and creating tools that free up human creative energy.</p>
+            </div>
+          </li>
+          <li>
+            <div class="icon">✨</div>
+            <div>
+              <strong>Aesthetic Warmth</strong>
+              <p>I like interfaces to feel alive, warm, and natural—using subtle animations, clean layouts, and rich color schemes.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    background: transparent;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-7);
+  }
+
+  .story-card h3, .philosophy-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: var(--space-4);
+    color: var(--text-main);
+    border-bottom: 2px solid var(--accent-glow);
+    padding-bottom: 0.4rem;
+    display: inline-block;
+  }
+
+  .story-card p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+    line-height: 1.8;
+  }
+
+  .story-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .value-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .value-list li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .value-list .icon {
+    font-size: 1.8rem;
+    background: rgba(255, 255, 255, 0.4);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    flex-shrink: 0;
+  }
+
+  .value-list strong {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .value-list p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>
