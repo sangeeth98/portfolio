@@ -1,28 +1,49 @@
 ---
-import GhibliSky from './GhibliSky.astro';
+import MatrixRain from './MatrixRain.astro';
 ---
 
 <section id="home" class="hero-section">
-  <!-- Sky background inside Hero -->
-  <GhibliSky />
+  <!-- Matrix rain background -->
+  <MatrixRain />
 
-  <!-- Animated grass hills silhouettes at the bottom of hero -->
-  <div class="hills">
-    <div class="hill hill-1"></div>
-    <div class="hill hill-2"></div>
-  </div>
+  <!-- Gradient overlay for readability -->
+  <div class="hero-gradient-overlay"></div>
 
   <div class="container hero-content">
-    <div class="intro-badge">🍃 Welcome to my digital clearing</div>
+    <div class="intro-badge">
+      <span class="badge-prompt">$</span> cat ./about_me.md
+    </div>
     <h1 class="hero-title">
-      Hello, I'm <span class="highlight">Sangeeth Kumar</span>
+      <span class="hero-greeting">Hello, I'm</span>
+      <span class="hero-name">Sangeeth<span class="cursor-blink"></span></span>
     </h1>
     <p class="hero-subtitle">
-      A Software Engineer dedicated to crafting simple, reliable automation, computer vision integrations, and elegant web platforms. Inspired by the calm and wonder of nature.
+      Backend engineer & AI systems builder with ~6 years of experience crafting
+      scalable data pipelines, agentic architectures, and developer tools.
+      I build things that think.
     </p>
     <div class="hero-actions">
-      <a href="#projects" class="btn">View My Projects</a>
-      <a href="#experience" class="btn btn-secondary">My Experience</a>
+      <a href="#projects" class="btn">ls ./projects</a>
+      <a href="#experience" class="btn btn-secondary">cat experience.log</a>
+    </div>
+
+    <!-- Terminal snippet -->
+    <div class="hero-terminal">
+      <div class="terminal-dots">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="terminal-title">~/.config/sangeeth</span>
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-line"><span class="prompt">❯</span> <span class="cmd">whoami</span></div>
+        <div class="terminal-line output">sangeeth — software engineer</div>
+        <div class="terminal-line"><span class="prompt">❯</span> <span class="cmd">cat stack.yml</span></div>
+        <div class="terminal-line output">languages: [Python, TypeScript, SQL]</div>
+        <div class="terminal-line output">focus: [backend, agentic-ai, data-pipelines]</div>
+        <div class="terminal-line output">tools: [FastAPI, Astro, Docker, uv]</div>
+        <div class="terminal-line"><span class="prompt">❯</span> <span class="cmd blink-cursor">_</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -37,7 +58,19 @@ import GhibliSky from './GhibliSky.astro';
     padding-top: 80px;
     padding-bottom: 0;
     overflow: hidden;
-    background: transparent;
+    background: radial-gradient(ellipse at 50% 0%, rgba(0, 255, 65, 0.04) 0%, transparent 60%),
+                var(--bg-primary);
+  }
+
+  .hero-gradient-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to top, var(--bg-primary), transparent);
+    z-index: 2;
+    pointer-events: none;
   }
 
   .hero-content {
@@ -45,90 +78,144 @@ import GhibliSky from './GhibliSky.astro';
     z-index: 10;
     text-align: center;
     max-width: 800px;
-    margin-bottom: 8rem; /* Space for hills */
-    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .intro-badge {
-    display: inline-block;
-    padding: 0.4rem 1.2rem;
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid var(--card-border);
-    backdrop-filter: blur(5px);
-    border-radius: var(--radius-pill);
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 1rem;
+    background: rgba(0, 255, 65, 0.06);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-secondary);
     margin-bottom: var(--space-4);
   }
 
-  .hero-title {
-    font-family: var(--font-heading);
-    font-size: 3.5rem;
+  .badge-prompt {
+    color: var(--neon-green);
     font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: var(--space-3);
-    color: var(--text-main);
   }
 
-  .hero-title .highlight {
-    background: linear-gradient(120deg, var(--accent-color) 0%, #d86856 100%);
+  .hero-greeting {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    letter-spacing: 0;
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-mono);
+    font-size: 3.8rem;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: var(--space-4);
+    color: var(--text-primary);
+  }
+
+  .hero-name {
+    background: linear-gradient(135deg, var(--neon-green) 0%, var(--neon-cyan) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
     position: relative;
   }
 
   .hero-subtitle {
-    font-size: 1.2rem;
-    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--text-secondary);
     margin-bottom: var(--space-5);
     line-height: 1.8;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-actions {
     display: flex;
     gap: var(--space-3);
     justify-content: center;
+    margin-bottom: var(--space-7);
   }
 
-  /* Soft Nature Hills */
-  .hills {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 160px;
-    pointer-events: none;
-    z-index: 2;
+  /* Terminal snippet */
+  .hero-terminal {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: left;
+    background: rgba(6, 8, 16, 0.9);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 255, 65, 0.05);
   }
 
-  .hill {
-    position: absolute;
-    bottom: -10px;
-    width: 150%;
-    height: 220px;
+  .terminal-dots {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid var(--border-primary);
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    transition: background 0.3s;
+  }
+  .dot.red { background: #ff5f56; }
+  .dot.yellow { background: #ffbd2e; }
+  .dot.green { background: #27c93f; }
+
+  .terminal-title {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-dimmed);
+    margin-left: 8px;
   }
 
-  .hill-1 {
-    left: -20%;
-    background: var(--hill-color-1);
-    opacity: 0.85;
-    transform: rotate(-3deg);
+  .terminal-body {
+    padding: 14px 16px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    line-height: 1.7;
   }
 
-  .hill-2 {
-    right: -25%;
-    background: var(--hill-color-2);
-    height: 180px;
-    transform: rotate(2deg);
+  .terminal-line {
+    color: var(--text-primary);
+  }
+
+  .terminal-line .prompt {
+    color: var(--neon-green);
+    margin-right: 6px;
+  }
+
+  .terminal-line .cmd {
+    color: var(--neon-cyan);
+  }
+
+  .terminal-line.output {
+    color: var(--text-secondary);
+    padding-left: 1.2rem;
+  }
+
+  .blink-cursor {
+    animation: blink 1s step-end infinite;
   }
 
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(24px);
     }
     to {
       opacity: 1;
@@ -141,7 +228,7 @@ import GhibliSky from './GhibliSky.astro';
       font-size: 2.5rem;
     }
     .hero-subtitle {
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
     .hero-actions {
       flex-direction: column;
@@ -150,17 +237,11 @@ import GhibliSky from './GhibliSky.astro';
     }
     .hero-actions .btn {
       width: 100%;
-      max-width: 280px;
+      max-width: 260px;
       justify-content: center;
     }
-    .hills {
-      height: 100px;
-    }
-    .hill-1 {
-      height: 140px;
-    }
-    .hill-2 {
-      height: 120px;
+    .hero-terminal {
+      max-width: 100%;
     }
   }
 </style>

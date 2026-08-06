@@ -1,49 +1,54 @@
 ---
-// About.astro: Sangeeth's Background & Development Philosophy
+// About.astro: Tech philosophy & background — no personal details
 ---
 
 <section id="about" class="about-section">
   <div class="container">
-    <h2 class="section-title">About Me</h2>
+    <h2 class="section-title">about_me</h2>
     
     <div class="about-grid">
       <!-- Story Card -->
-      <div class="glass-card story-card">
-        <h3>My Journey</h3>
+      <div class="terminal-card terminal-card-windowed story-card">
+        <h3 class="card-heading"><span class="heading-accent">#</span> Background</h3>
         <p>
-          I am a Software Engineer based in India who views coding as both an engineering discipline and a craft. Since finishing college, I have spent the past five years working on automation scripting, data-driven backends, and full-stack web applications.
+          I'm a software engineer with ~6 years of experience building backend systems,
+          enterprise data pipelines, and AI-powered tooling. I've worked across large-scale
+          consumer analytics platforms and legacy system modernization projects.
         </p>
         <p>
-          My passion lies in bridging the gap between raw backend scripting and delightful, human-centric interfaces. I strive to build software that is robust underneath, yet welcoming and simple on the surface.
+          Currently deep into the agentic AI space — building knowledge engines,
+          tool-calling architectures, and structured output systems that bridge
+          LLMs with real-world data sources.
         </p>
         <p>
-          Outside of coding, I draw deep inspiration from hiking through green landscapes, exploring nature, and learning about clean, minimalist design frameworks.
+          I believe in clean architecture, automation over manual toil, and
+          shipping production-grade systems — not prototypes.
         </p>
       </div>
 
-      <!-- Philosophy / Approach -->
-      <div class="glass-card philosophy-card">
-        <h3>My Philosophy</h3>
+      <!-- Philosophy / Values -->
+      <div class="terminal-card terminal-card-windowed philosophy-card">
+        <h3 class="card-heading"><span class="heading-accent">#</span> Philosophy</h3>
         <ul class="value-list">
           <li>
-            <div class="icon">☘️</div>
+            <div class="value-icon">⚡</div>
             <div>
-              <strong>Simple Formats</strong>
-              <p>I believe that anything can be achieved in a simple format. I actively avoid unnecessary complexity and over-engineered systems.</p>
+              <strong>Systems Thinking</strong>
+              <p>Every service is part of a larger system. I design for composability, failure tolerance, and observability from day one.</p>
             </div>
           </li>
           <li>
-            <div class="icon">🍃</div>
+            <div class="value-icon">🔧</div>
             <div>
-              <strong>Automation First</strong>
-              <p>If a task is repetitive, it deserves a Python script. I value efficiency and creating tools that free up human creative energy.</p>
+              <strong>Automate Everything</strong>
+              <p>If a task is repetitive, it deserves a script. I build pipelines and tools that eliminate toil and free up human creativity.</p>
             </div>
           </li>
           <li>
-            <div class="icon">✨</div>
+            <div class="value-icon">🧠</div>
             <div>
-              <strong>Aesthetic Warmth</strong>
-              <p>I like interfaces to feel alive, warm, and natural—using subtle animations, clean layouts, and rich color schemes.</p>
+              <strong>Ship & Iterate</strong>
+              <p>Pragmatism over perfection. Get it working, get it tested, ship it — then refine. Speed and quality aren't opposites.</p>
             </div>
           </li>
         </ul>
@@ -60,22 +65,26 @@
   .about-grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    gap: var(--space-7);
+    gap: var(--space-6);
   }
 
-  .story-card h3, .philosophy-card h3 {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
+  .card-heading {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
     margin-bottom: var(--space-4);
-    color: var(--text-main);
-    border-bottom: 2px solid var(--accent-glow);
-    padding-bottom: 0.4rem;
+    color: var(--text-primary);
     display: inline-block;
   }
 
+  .heading-accent {
+    color: var(--neon-green);
+    margin-right: 0.3rem;
+  }
+
   .story-card p {
-    font-size: 1.05rem;
-    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
     margin-bottom: 1.2rem;
     line-height: 1.8;
   }
@@ -97,29 +106,31 @@
     align-items: flex-start;
   }
 
-  .value-list .icon {
-    font-size: 1.8rem;
-    background: rgba(255, 255, 255, 0.4);
-    width: 45px;
-    height: 45px;
+  .value-icon {
+    font-size: 1.4rem;
+    background: rgba(0, 255, 65, 0.08);
+    width: 42px;
+    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-primary);
     flex-shrink: 0;
   }
 
   .value-list strong {
-    font-size: 1.1rem;
-    color: var(--text-main);
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    color: var(--neon-green);
     display: block;
     margin-bottom: 0.2rem;
   }
 
   .value-list p {
-    font-size: 0.95rem;
-    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: var(--text-secondary);
     line-height: 1.6;
   }
 

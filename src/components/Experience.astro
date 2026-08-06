@@ -1,48 +1,63 @@
 ---
-// Experience.astro: Timeline of professional experience and skills
+// Experience.astro: Vague timeline (no company names, no cities) + skill matrix
 ---
 
 <section id="experience" class="experience-section">
   <div class="container">
-    <h2 class="section-title">Experience & Skills</h2>
+    <h2 class="section-title">experience.log</h2>
     
     <div class="experience-layout">
       <!-- Timeline column -->
       <div class="timeline">
         
-        <!-- Experience Item 1 -->
+        <!-- Current Role -->
         <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="glass-card timeline-card">
-            <span class="role-duration">2021 - Present</span>
-            <h3 class="role-title">Software Engineer (Data & Automation)</h3>
-            <h4 class="company-name">NielsenIQ (NIQ) — Chennai, India</h4>
+          <div class="timeline-dot active"></div>
+          <div class="terminal-card timeline-card">
+            <span class="role-duration"><span class="duration-icon">●</span> Current Role</span>
+            <h3 class="role-title">Backend Engineer — Data & Analytics Platform</h3>
             <p class="role-description">
-              Leading the development of automation pipelines, scripting, and backend solutions. Specialized in saving manual operational overhead through Python-based tools and maintaining secure database integrations.
+              Building and maintaining enterprise-scale data pipelines for a global analytics 
+              company. Engineering Python-based automation services, optimizing database 
+              performance, and working within cross-functional distributed teams under Agile.
             </p>
             <ul class="role-bullet-list">
-              <li>Created robust Python scripts to automate complex data processing tasks.</li>
-              <li>Engineered custom monitoring dashboards using HTML, CSS, and vanilla JS.</li>
-              <li>Optimized SQL queries and database structures to handle large datasets efficiently.</li>
+              <li>Architected modular Python services for large-scale consumer measurement data processing</li>
+              <li>Optimized SQL pipelines and database structures for high-throughput analytics workloads</li>
+              <li>Built internal monitoring dashboards and automation tooling to reduce manual overhead</li>
             </ul>
           </div>
         </div>
 
-        <!-- Experience Item 2 -->
+        <!-- Previous Role -->
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-          <div class="glass-card timeline-card">
-            <span class="role-duration">2018 - 2021</span>
-            <h3 class="role-title">Full-Stack & Systems Developer</h3>
-            <h4 class="company-name">Academic & Freelance Projects</h4>
+          <div class="terminal-card timeline-card">
+            <span class="role-duration">Previous Role — ~2.5 years</span>
+            <h3 class="role-title">Systems Engineer — Backend & Data Engineering</h3>
             <p class="role-description">
-              Focused on computer vision applications, automation, and reverse engineering. Contributed to open-source developer tool discussions (SumatraPDF, Joplin, Adobe) and created practical system scripts.
+              Backend development and data engineering at a large IT services company.
+              Focused on legacy system modernization, cloud migration prep, and building 
+              modular Python architectures.
             </p>
             <ul class="role-bullet-list">
-              <li>Integrated OpenCV and Face Recognition models for real-time monitoring solutions.</li>
-              <li>Authored local utility scripts for bulk automation and brute-force zip processing.</li>
-              <li>Created lightweight responsive web applications using ES6 Modules and glassmorphic designs.</li>
+              <li>Refactored enterprise legacy systems into modular Python architectures for cloud readiness</li>
+              <li>Managed backend integrations with Apache Hive, Oracle DB, and enterprise data frameworks</li>
+              <li>Recognized for code quality and championing modern engineering practices</li>
             </ul>
+          </div>
+        </div>
+
+        <!-- Education (minimal) -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="terminal-card timeline-card education-card">
+            <span class="role-duration">Education</span>
+            <h3 class="role-title">B.Tech — Electronics & Communication (IoT Specialization)</h3>
+            <p class="role-description">
+              Graduated with distinction. Built capstone projects in computer vision (OpenCV, 
+              YOLO), IoT sensor networks, and ML-based prediction systems.
+            </p>
           </div>
         </div>
 
@@ -50,42 +65,54 @@
 
       <!-- Skills column -->
       <div class="skills-panel">
-        <div class="glass-card skills-card">
-          <h3>My Toolkit</h3>
-          <p class="skills-intro">I love using modern, lightweight tools that get the job done without extra weight.</p>
+        <div class="terminal-card terminal-card-windowed skills-card">
+          <h3 class="card-heading"><span class="heading-accent">#</span> tech_stack</h3>
+          <p class="skills-intro">Tools and technologies I work with daily.</p>
           
           <div class="skill-category">
             <h4>Languages</h4>
             <div class="skill-tags">
               <span>Python</span>
-              <span>Java</span>
-              <span>JavaScript (ES6)</span>
+              <span>TypeScript</span>
+              <span>JavaScript</span>
               <span>SQL</span>
-              <span>Bash</span>
-              <span>C++</span>
+              <span>Rust</span>
             </div>
           </div>
 
           <div class="skill-category">
-            <h4>Libraries & Databases</h4>
+            <h4>Backend & Data</h4>
             <div class="skill-tags">
-              <span>OpenCV</span>
-              <span>Astro</span>
+              <span>FastAPI</span>
               <span>Node.js</span>
-              <span>Firebase</span>
-              <span>SQLite</span>
-              <span>MongoDB</span>
+              <span>PostgreSQL</span>
+              <span>Redis</span>
+              <span>Apache Hive</span>
+              <span>Oracle DB</span>
             </div>
           </div>
 
           <div class="skill-category">
-            <h4>Tools & Frameworks</h4>
+            <h4>AI & Agentic Systems</h4>
             <div class="skill-tags">
-              <span>Git & GitHub</span>
-              <span>UV (Python PM)</span>
-              <span>VS Code</span>
-              <span>Linux</span>
+              <span>LangChain</span>
+              <span>LlamaIndex</span>
+              <span>Gemini API</span>
+              <span>RAG Pipelines</span>
+              <span>Tool Calling</span>
+              <span>Prompt Engineering</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Infrastructure & Tools</h4>
+            <div class="skill-tags">
               <span>Docker</span>
+              <span>Git / GitHub</span>
+              <span>CI/CD</span>
+              <span>uv</span>
+              <span>Astro</span>
+              <span>Linux</span>
             </div>
           </div>
         </div>
@@ -109,12 +136,22 @@
   /* Timeline styling */
   .timeline {
     position: relative;
-    border-left: 2px dashed var(--text-muted);
+    border-left: 1px solid var(--border-primary);
     padding-left: var(--space-5);
     margin-left: var(--space-3);
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -1px;
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--neon-green));
   }
 
   .timeline-item {
@@ -123,14 +160,20 @@
 
   .timeline-dot {
     position: absolute;
-    left: calc(-1 * var(--space-5) - 9px);
+    left: calc(-1 * var(--space-5) - 6px);
     top: 24px;
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    background: var(--accent-color);
-    border: 3px solid var(--bg-gradient);
-    box-shadow: 0 0 10px var(--accent-glow);
+    background: var(--bg-tertiary);
+    border: 2px solid var(--neon-green-dim);
+  }
+
+  .timeline-dot.active {
+    background: var(--neon-green);
+    border-color: var(--neon-green);
+    box-shadow: 0 0 12px rgba(0, 255, 65, 0.5);
+    animation: glowPulse 2s ease-in-out infinite;
   }
 
   .timeline-card {
@@ -138,36 +181,37 @@
   }
 
   .role-duration {
-    display: inline-block;
-    background: var(--accent-glow);
-    color: var(--accent-color);
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 0.85rem;
-    padding: 0.2rem 0.8rem;
-    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.78rem;
+    color: var(--neon-green);
     margin-bottom: var(--space-2);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .duration-icon {
+    font-size: 0.5rem;
+    animation: blink 1.5s ease-in-out infinite;
   }
 
   .role-title {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    color: var(--text-main);
-    margin-bottom: 0.3rem;
-  }
-
-  .company-name {
-    font-size: 1rem;
-    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    margin-bottom: 0.4rem;
     font-weight: 600;
-    margin-bottom: 1rem;
   }
 
   .role-description {
-    font-size: 1rem;
-    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: var(--text-secondary);
     margin-bottom: 1rem;
-    line-height: 1.6;
+    line-height: 1.7;
   }
 
   .role-bullet-list {
@@ -178,33 +222,39 @@
   .role-bullet-list li {
     position: relative;
     padding-left: 1.2rem;
-    font-size: 0.95rem;
-    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: var(--text-secondary);
     margin-bottom: 0.4rem;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .role-bullet-list li::before {
-    content: '✦';
+    content: '▸';
     position: absolute;
     left: 0;
-    color: var(--accent-color);
+    color: var(--neon-green);
+    font-family: var(--font-mono);
   }
 
-  /* Skills Panel styling */
-  .skills-card h3 {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    color: var(--text-main);
+  /* Skills Panel */
+  .card-heading {
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
     margin-bottom: var(--space-3);
-    border-bottom: 2px solid var(--accent-glow);
-    padding-bottom: 0.4rem;
+    color: var(--text-primary);
     display: inline-block;
   }
 
+  .heading-accent {
+    color: var(--neon-green);
+    margin-right: 0.3rem;
+  }
+
   .skills-intro {
-    font-size: 1rem;
-    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
     margin-bottom: var(--space-4);
   }
 
@@ -217,35 +267,17 @@
   }
 
   .skill-category h4 {
-    font-family: var(--font-heading);
-    font-size: 1.05rem;
-    color: var(--text-main);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-dimmed);
     margin-bottom: var(--space-2);
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
 
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .skill-tags span {
-    font-size: 0.85rem;
-    background: rgba(255, 255, 255, 0.4);
-    border: 1px solid var(--card-border);
-    color: var(--text-muted);
-    font-weight: 600;
-    padding: 0.25rem 0.75rem;
-    border-radius: var(--radius-md);
-    transition: transform 0.2s, background 0.2s, color 0.2s, border-color 0.2s;
-  }
-
-  .skill-tags span:hover {
-    transform: translateY(-2px);
-    background: var(--accent-color);
-    color: #fff;
-    border-color: var(--accent-color);
+  .education-card .role-title {
+    font-size: 1rem;
   }
 
   @media (max-width: 900px) {

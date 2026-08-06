@@ -1,90 +1,102 @@
 ---
-// Projects.astro: Highlights key software projects
+// Projects.astro: Featured projects — cogniverse, OKF, portfolio, legacy capstone
 ---
 
 <section id="projects" class="projects-section">
   <div class="container">
-    <h2 class="section-title">Featured Projects</h2>
+    <h2 class="section-title">./projects</h2>
     
     <div class="projects-grid">
       
-      <!-- Project 1: Capstone -->
-      <div class="glass-card project-card">
+      <!-- Project 1: Cogniverse -->
+      <div class="terminal-card project-card featured">
         <div class="project-header">
-          <span class="project-icon">🏰</span>
-          <span class="project-category">Computer Vision / IoT</span>
+          <span class="project-icon">🧠</span>
+          <span class="project-category">AI / Knowledge Engine</span>
         </div>
-        <h3 class="project-title">Smart Security System</h3>
+        <h3 class="project-title">cogniverse</h3>
         <p class="project-description">
-          A college capstone project tying together OpenCV face detection, an Android app dashboard, and Firebase storage for real-time security alerts.
+          A next-gen personal knowledge engine and interactive 3D constellation visualizer 
+          built on Google's Open Knowledge Format (OKF v0.2). Features Python AST compiler,
+          force-graph visualization, and structured knowledge management.
+        </p>
+        <div class="project-tech">
+          <span>Python</span>
+          <span>OKF v0.2</span>
+          <span>D3.js</span>
+          <span>Force Graph</span>
+          <span>FastAPI</span>
+        </div>
+        <a href="https://github.com/sangeeth98" target="_blank" rel="noopener noreferrer" class="project-link">
+          view source <span>→</span>
+        </a>
+      </div>
+
+      <!-- Project 2: Sangeeth OKF Knowledge Base -->
+      <div class="terminal-card project-card">
+        <div class="project-header">
+          <span class="project-icon">📦</span>
+          <span class="project-category">Knowledge Format</span>
+        </div>
+        <h3 class="project-title">sangeeth_okf</h3>
+        <p class="project-description">
+          Personal knowledge base built on Google's Open Knowledge Format v0.2 spec. 
+          Structured markdown documents with YAML frontmatter covering skills, career, 
+          projects, and digital footprint — designed for agent consumption.
+        </p>
+        <div class="project-tech">
+          <span>OKF v0.2</span>
+          <span>Markdown</span>
+          <span>YAML</span>
+          <span>Python</span>
+        </div>
+        <a href="https://github.com/sangeeth98" target="_blank" rel="noopener noreferrer" class="project-link">
+          view source <span>→</span>
+        </a>
+      </div>
+
+      <!-- Project 3: This Portfolio -->
+      <div class="terminal-card project-card">
+        <div class="project-header">
+          <span class="project-icon">⚡</span>
+          <span class="project-category">Web / Frontend</span>
+        </div>
+        <h3 class="project-title">portfolio</h3>
+        <p class="project-description">
+          This cyberpunk-themed portfolio site. Built with Astro, vanilla CSS, and zero 
+          JavaScript frameworks. Features matrix rain effects, terminal-style UI, 
+          CRT scanlines, and a monospace-forward design system.
+        </p>
+        <div class="project-tech">
+          <span>Astro</span>
+          <span>CSS</span>
+          <span>TypeScript</span>
+        </div>
+        <a href="https://github.com/sangeeth98/portfolio" target="_blank" rel="noopener noreferrer" class="project-link">
+          view source <span>→</span>
+        </a>
+      </div>
+
+      <!-- Project 4: Capstone (Legacy) -->
+      <div class="terminal-card project-card">
+        <div class="project-header">
+          <span class="project-icon">📡</span>
+          <span class="project-category">IoT / Computer Vision</span>
+        </div>
+        <h3 class="project-title">smart_security_system</h3>
+        <p class="project-description">
+          University capstone: real-time security monitoring using OpenCV face detection, 
+          YOLO object detection, Raspberry Pi camera module, and Firebase cloud integration.
         </p>
         <div class="project-tech">
           <span>Python</span>
           <span>OpenCV</span>
+          <span>YOLO</span>
           <span>Firebase</span>
-          <span>Android</span>
+          <span>Raspberry Pi</span>
         </div>
-        <a href="https://github.com/sangeeth98/capstone-project" target="_blank" rel="noopener noreferrer" class="project-link">
-          GitHub Repo <span>→</span>
-        </a>
-      </div>
-
-      <!-- Project 2: OpenCV Practice -->
-      <div class="glass-card project-card">
-        <div class="project-header">
-          <span class="project-icon">📸</span>
-          <span class="project-category">Computer Vision</span>
-        </div>
-        <h3 class="project-title">OpenCV Practice</h3>
-        <p class="project-description">
-          Local Python scripts experimenting with edge detection cascades, color-space filtering, and basic webcam video frame processing.
-        </p>
-        <div class="project-tech">
-          <span>Python</span>
-          <span>OpenCV</span>
-          <span>NumPy</span>
-        </div>
-        <a href="https://github.com/sangeeth98/opencv_practice" target="_blank" rel="noopener noreferrer" class="project-link">
-          GitHub Repo <span>→</span>
-        </a>
-      </div>
-
-      <!-- Project 3: Brute Force Zipfiles -->
-      <div class="glass-card project-card">
-        <div class="project-header">
-          <span class="project-icon">🔑</span>
-          <span class="project-category">Security Scripting</span>
-        </div>
-        <h3 class="project-title">Zip Password Utility</h3>
-        <p class="project-description">
-          A simple Python utility that uses wordlist parsing to attempt password recovery on zip archives.
-        </p>
-        <div class="project-tech">
-          <span>Python</span>
-          <span>Zipfile</span>
-        </div>
-        <a href="https://github.com/sangeeth98/brute-force-on-zipfiles" target="_blank" rel="noopener noreferrer" class="project-link">
-          GitHub Repo <span>→</span>
-        </a>
-      </div>
-
-      <!-- Project 4: LearnWeb / ThinkJava -->
-      <div class="glass-card project-card">
-        <div class="project-header">
-          <span class="project-icon">🌱</span>
-          <span class="project-category">Coursework</span>
-        </div>
-        <h3 class="project-title">Web & Object Design</h3>
-        <p class="project-description">
-          Collection of structured college coursework files covering basic ES6 CSS/JS layouts and Java programming templates.
-        </p>
-        <div class="project-tech">
-          <span>HTML/CSS</span>
-          <span>JavaScript</span>
-          <span>Java</span>
-        </div>
-        <a href="https://github.com/sangeeth98/LearnWeb" target="_blank" rel="noopener noreferrer" class="project-link">
-          GitHub Repo <span>→</span>
+        <a href="https://github.com/sangeeth98" target="_blank" rel="noopener noreferrer" class="project-link">
+          view source <span>→</span>
         </a>
       </div>
 
@@ -99,7 +111,7 @@
 
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
     gap: var(--space-5);
   }
 
@@ -108,6 +120,15 @@
     flex-direction: column;
     height: 100%;
     padding: var(--space-5);
+    position: relative;
+  }
+
+  .project-card.featured {
+    border-color: rgba(0, 255, 65, 0.25);
+  }
+
+  .project-card.featured::before {
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.3), transparent);
   }
 
   .project-header {
@@ -118,27 +139,37 @@
   }
 
   .project-icon {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 
   .project-category {
-    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
-    color: var(--accent-color);
-    letter-spacing: 0.05em;
+    color: var(--neon-green);
+    letter-spacing: 0.06em;
+    opacity: 0.8;
   }
 
   .project-title {
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    color: var(--text-main);
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    color: var(--text-primary);
     margin-bottom: var(--space-2);
+    font-weight: 600;
+  }
+
+  .project-title::before {
+    content: '> ';
+    color: var(--neon-green);
+    opacity: 0.5;
   }
 
   .project-description {
-    font-size: 0.95rem;
-    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
     line-height: 1.65;
     margin-bottom: var(--space-4);
     flex-grow: 1;
@@ -152,37 +183,41 @@
   }
 
   .project-tech span {
-    font-size: 0.8rem;
-    background: rgba(0, 0, 0, 0.04);
-    color: var(--text-muted);
-    padding: 0.2rem 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    background: rgba(0, 255, 65, 0.06);
+    color: var(--text-dimmed);
+    padding: 0.2rem 0.55rem;
     border-radius: var(--radius-sm);
-    border: 1px solid var(--card-border);
-  }
-
-  html.dark-mode .project-tech span {
-    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-primary);
+    letter-spacing: 0.02em;
   }
 
   .project-link {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--text-main);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--neon-green) !important;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
-    transition: color 0.2s, gap 0.2s;
+    transition: gap 0.2s, text-shadow 0.2s;
+    letter-spacing: 0.02em;
   }
 
   .project-link:hover {
-    color: var(--accent-color);
-    gap: 0.5rem;
+    gap: 0.6rem;
+    text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
   }
 
   .project-link span {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1;
+    transition: transform 0.2s;
+  }
+
+  .project-link:hover span {
+    transform: translateX(3px);
   }
 </style>

@@ -1,0 +1,60 @@
+---
+// MatrixRain.astro: CSS-only matrix code rain effect for hero background
+---
+<div class="matrix-rain" aria-hidden="true">
+  {Array.from({ length: 20 }).map((_, i) => (
+    <div
+      class="matrix-column"
+      style={`left: ${i * 5}%; animation-duration: ${8 + Math.random() * 12}s; animation-delay: ${-Math.random() * 10}s; opacity: ${0.15 + Math.random() * 0.25};`}
+    >
+      <span>{'01001110'.split('').concat('アイウエオカキクケコ'.split('')).concat('{}[]<>/>'.split('')).sort(() => Math.random() - 0.5).join('\n')}</span>
+    </div>
+  ))}
+</div>
+
+<style>
+  .matrix-rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .matrix-column {
+    position: absolute;
+    top: -100%;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--neon-green);
+    white-space: pre;
+    text-align: center;
+    animation: matrixFall linear infinite;
+    text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+    user-select: none;
+  }
+
+  .matrix-column span {
+    display: block;
+    letter-spacing: 0.1em;
+  }
+
+  @keyframes matrixFall {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(calc(100vh + 100%));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .matrix-column {
+      font-size: 11px;
+    }
+  }
+</style>

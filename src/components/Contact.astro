@@ -1,72 +1,61 @@
 ---
-// Contact.astro: Social contacts and footer sitemap
+// Contact.astro: Footer with social links — no Discord, no full name, no hosting details
 ---
 
 <section id="contact" class="contact-section">
-  <!-- Glowing lanterns for twilight ambiance -->
-  <div class="lanterns-glow"></div>
-
   <div class="container">
     <div class="footer-divider"></div>
 
     <footer class="sitemap-footer">
-      <!-- Brand / Brief -->
+      <!-- Brand -->
       <div class="footer-brand">
         <h4>
-          <span class="logo-icon-wrapper" style="display: inline-flex; align-items: center; margin-right: 6px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-color);"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 1 9.8a7 7 0 0 1-9 8.2z"/><path d="M9 22v-4"/></svg>
-          </span>sangeeth
+          <span class="logo-bracket">&lt;</span>sangeeth<span class="logo-bracket"> /&gt;</span>
         </h4>
         <p>
-          A software engineer building clean Python automation pipelines,
-          computer vision applications, and responsive web platforms. Inspired
-          by nature and design.
+          A backend engineer building scalable data pipelines, agentic AI systems,
+          and developer tools. Shipping production-grade software, not prototypes.
         </p>
       </div>
 
       <!-- Sitemap links -->
       <div class="footer-col">
-        <h5>Sitemap</h5>
+        <h5>Navigation</h5>
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
 
-      <!-- References and code bases -->
+      <!-- Connect links -->
       <div class="footer-col">
-        <h5>Projects & Links</h5>
+        <h5>Connect</h5>
         <ul>
           <li>
             <a
-              href="https://github.com/sangeeth98/capstone-project"
+              href="https://github.com/sangeeth98"
               target="_blank"
-              rel="noopener noreferrer">Smart Security IoT</a
-            >
+              rel="noopener noreferrer">GitHub</a>
           </li>
           <li>
             <a
-              href="https://github.com/sangeeth98/opencv_practice"
+              href="https://www.linkedin.com/in/sangeethkumarvm/"
               target="_blank"
-              rel="noopener noreferrer">OpenCV Practice</a
-            >
+              rel="noopener noreferrer">LinkedIn</a>
           </li>
           <li>
             <a
-              href="https://github.com/sangeeth98/brute-force-on-zipfiles"
+              href="https://x.com/sangeethkumarvm"
               target="_blank"
-              rel="noopener noreferrer">Zip Automation</a
-            >
+              rel="noopener noreferrer">X / Twitter</a>
           </li>
           <li>
             <a
               href="https://github.com/sangeeth98/portfolio"
               target="_blank"
-              rel="noopener noreferrer">Portfolio Source</a
-            >
+              rel="noopener noreferrer">Source Code</a>
           </li>
         </ul>
       </div>
@@ -75,13 +64,13 @@
     <!-- Bottom Bar -->
     <div class="footer-bottom-bar">
       <p>
-        © 2026 <strong>Sangeeth Kumar Vasudevan</strong>. Hand-coded with Astro
-        & CSS.
+        © 2026 <strong>Sangeeth</strong>. Built with Astro & vanilla CSS.
       </p>
       <p>
-        Hosted on <strong>GitHub Pages</strong>. Domain mapped to <strong
-          >sangeeth.uk</strong
-        >.
+        <span class="footer-status">
+          <span class="status-dot"></span>
+          All systems operational
+        </span>
       </p>
     </div>
   </div>
@@ -96,25 +85,33 @@
 
   .footer-divider {
     height: 1px;
-    background: var(--card-border);
+    background: linear-gradient(90deg, transparent, var(--border-primary), transparent);
     margin: var(--space-4) 0 var(--space-6) 0;
   }
 
-  /* Decorative glowing elements */
-  .lanterns-glow {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px;
-    height: 150px;
-    background: radial-gradient(
-      circle,
-      var(--accent-glow) 0%,
-      rgba(255, 215, 0, 0) 70%
-    );
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.5;
+  .logo-bracket {
+    color: var(--neon-cyan);
+    font-weight: 400;
+    opacity: 0.6;
+  }
+
+  .footer-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--neon-green);
+    box-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+    animation: glowPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 4px rgba(0, 255, 65, 0.3); }
+    50% { box-shadow: 0 0 12px rgba(0, 255, 65, 0.6); }
   }
 </style>

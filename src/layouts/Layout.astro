@@ -7,8 +7,8 @@ interface Props {
 }
 
 const { 
-	title = "Sangeeth Kumar Vasudevan | Portfolio", 
-	description = "Personal portfolio of Sangeeth Kumar Vasudevan, a Software Engineer specializing in Python automation, computer vision, data analytics, and full-stack web development."
+	title = "Sangeeth | Software Engineer", 
+	description = "Portfolio of Sangeeth — a software engineer specializing in backend systems, agentic AI architectures, and data pipeline engineering."
 } = Astro.props;
 ---
 
@@ -23,29 +23,27 @@ const {
 		<!-- SEO Meta Tags -->
 		<title>{title}</title>
 		<meta name="description" content={description} />
-		<meta name="keywords" content="Sangeeth Kumar Vasudevan, Sangeeth Kumar, sangeeth.uk, sangeeth98, Software Engineer, Python Developer, OpenCV, Automation Scripting, Web Developer" />
-		<meta name="author" content="Sangeeth Kumar Vasudevan" />
+		<meta name="keywords" content="Sangeeth, sangeeth98, Software Engineer, Backend Developer, Python, AI Engineer, Agentic AI, Data Pipelines, Full Stack" />
+		<meta name="author" content="Sangeeth" />
 
-		<!-- Open Graph / Facebook -->
+		<!-- Open Graph -->
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://sangeeth.uk/" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 
-		<!-- Google Fonts -->
+		<!-- Google Fonts: Monospace-forward stack -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-		<!-- Dark Mode Inline Restorer to Prevent Flash -->
+		<!-- Theme Restorer (prevent flash) -->
 		<script is:inline>
 			(function() {
-				const theme = localStorage.getItem('theme') || 
-					(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-				if (theme === 'dark') {
-					document.documentElement.classList.add('dark-mode');
+				const theme = localStorage.getItem('theme') || 'neon';
+				if (theme === 'dim') {
+					document.documentElement.classList.add('dim-mode');
 				} else {
-					document.documentElement.classList.remove('dark-mode');
+					document.documentElement.classList.remove('dim-mode');
 				}
 			})();
 		</script>
@@ -54,4 +52,3 @@ const {
 		<slot />
 	</body>
 </html>
-
