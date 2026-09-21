@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import CommandPalette from '../components/CommandPalette.astro';
 
 interface Props {
 	title?: string;
@@ -7,8 +8,8 @@ interface Props {
 }
 
 const { 
-	title = "Sangeeth | Software Engineer", 
-	description = "Portfolio of Sangeeth — a software engineer specializing in backend systems, agentic AI architectures, and data pipeline engineering."
+	title = "Sangeeth Kumar | Senior Backend Engineer & AI Systems Architect", 
+	description = "Portfolio of Sangeeth Kumar — Senior Backend Engineer specializing in high-throughput query engines, enterprise data platforms, Snowflake, and agentic AI systems."
 } = Astro.props;
 ---
 
@@ -17,7 +18,7 @@ const {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link id="site-favicon" rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		
 		<!-- SEO Meta Tags -->
@@ -36,19 +37,47 @@ const {
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-		<!-- Theme Restorer (prevent flash) -->
+		<!-- Theme & Color-Scheme Restorer (prevents FOUC + updates Favicon) -->
+		<meta name="color-scheme" content="light dark" />
 		<script is:inline>
 			(function() {
-				const theme = localStorage.getItem('theme') || 'neon';
-				if (theme === 'dim') {
-					document.documentElement.classList.add('dim-mode');
-				} else {
-					document.documentElement.classList.remove('dim-mode');
+				function syncFavicon(isDark) {
+					try {
+						const bg = isDark ? '%230a0e17' : '%23f8fafc';
+						const border = isDark ? '%2300ff41' : '%23059669';
+						const prompt = isDark ? '%2300ff41' : '%23059669';
+						const cursor = isDark ? '%2300d4ff' : '%230284c7';
+						const svgData = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='2' y='2' width='60' height='60' rx='14' fill='${bg}' stroke='${border}' stroke-width='4'/%3E%3Cpath d='M18 20 L30 32 L18 44' fill='none' stroke='${prompt}' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='36' y1='44' x2='48' y2='44' stroke='${cursor}' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E`;
+						const link = document.getElementById('site-favicon') || document.querySelector("link[rel*='icon']");
+						if (link) {
+							link.setAttribute('href', svgData);
+						}
+					} catch (e) {}
 				}
+
+				let saved = localStorage.getItem('theme');
+				if (saved !== 'light' && saved !== 'dark') {
+					const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+					saved = systemDark ? 'dark' : 'light';
+				}
+
+				const isDark = saved === 'dark';
+				if (isDark) {
+					document.documentElement.classList.add('dark');
+					document.documentElement.classList.remove('light');
+					document.documentElement.setAttribute('data-theme', 'dark');
+				} else {
+					document.documentElement.classList.add('light');
+					document.documentElement.classList.remove('dark');
+					document.documentElement.setAttribute('data-theme', 'light');
+				}
+				document.documentElement.setAttribute('data-theme-setting', saved);
+				syncFavicon(isDark);
 			})();
 		</script>
 	</head>
 	<body>
 		<slot />
+		<CommandPalette />
 	</body>
 </html>

@@ -1,0 +1,688 @@
+---
+// CommandPalette.astro: Keyboard navigation & Cmd+K command palette
+---
+
+<!-- Command Palette Modal -->
+<dialog id="cmd-dialog" class="cmd-dialog" aria-label="Command Palette">
+  <div class="cmd-container">
+    <div class="cmd-header">
+      <span class="cmd-search-icon">🔍</span>
+      <input
+        type="text"
+        id="cmd-input"
+        class="cmd-input"
+        placeholder="Type a command or search (e.g. projects, theme, experience)..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <span class="cmd-badge"><kbd>ESC</kbd></span>
+    </div>
+
+    <div class="cmd-body" id="cmd-results">
+      <!-- Section: Navigation -->
+      <div class="cmd-group" data-group="navigation">
+        <div class="cmd-group-title">Navigation</div>
+        <div class="cmd-item" data-action="navigate" data-target="#home">
+          <span class="cmd-item-icon">🏠</span>
+          <span class="cmd-item-label">Home</span>
+          <span class="cmd-item-shortcut"><kbd>1</kbd></span>
+        </div>
+        <div class="cmd-item" data-action="navigate" data-target="#about">
+          <span class="cmd-item-icon">👤</span>
+          <span class="cmd-item-label">About</span>
+          <span class="cmd-item-shortcut"><kbd>2</kbd></span>
+        </div>
+        <div class="cmd-item" data-action="navigate" data-target="#experience">
+          <span class="cmd-item-icon">💼</span>
+          <span class="cmd-item-label">Experience & Credentials</span>
+          <span class="cmd-item-shortcut"><kbd>3</kbd></span>
+        </div>
+        <div class="cmd-item" data-action="navigate" data-target="#projects">
+          <span class="cmd-item-icon">🚀</span>
+          <span class="cmd-item-label">Featured Projects</span>
+          <span class="cmd-item-shortcut"><kbd>4</kbd></span>
+        </div>
+        <div class="cmd-item" data-action="navigate" data-target="#contact">
+          <span class="cmd-item-icon">📬</span>
+          <span class="cmd-item-label">Contact & Socials</span>
+          <span class="cmd-item-shortcut"><kbd>5</kbd></span>
+        </div>
+      </div>
+
+      <!-- Section: Themes -->
+      <div class="cmd-group" data-group="theme">
+        <div class="cmd-group-title">Theme & Appearance</div>
+        <div class="cmd-item" data-action="theme" data-theme="system">
+          <span class="cmd-item-icon">💻</span>
+          <span class="cmd-item-label">System Theme (Auto OS Sync)</span>
+          <span class="cmd-item-shortcut"><kbd>T</kbd></span>
+        </div>
+        <div class="cmd-item" data-action="theme" data-theme="light">
+          <span class="cmd-item-icon">☀️</span>
+          <span class="cmd-item-label">Light Mode (Clean Swiss Data-Viz)</span>
+        </div>
+        <div class="cmd-item" data-action="theme" data-theme="dark">
+          <span class="cmd-item-icon">🌙</span>
+          <span class="cmd-item-label">Dark Mode (Cyberpunk Hacker Terminal)</span>
+        </div>
+      </div>
+
+      <!-- Section: External -->
+      <div class="cmd-group" data-group="external">
+        <div class="cmd-group-title">External & Documents</div>
+        <a href="https://drive.google.com/drive/folders/1K1AIov3z71PuJZhQ1Oicr2oqFSkpB-la?usp=sharing" target="_blank" rel="noopener noreferrer" class="cmd-item" data-action="link">
+          <span class="cmd-item-icon">📁</span>
+          <span class="cmd-item-label">Google Drive — Resumes & Documents</span>
+          <span class="cmd-item-shortcut">↗</span>
+        </a>
+        <a href="https://github.com/sangeeth98" target="_blank" rel="noopener noreferrer" class="cmd-item" data-action="link">
+          <span class="cmd-item-icon">🐙</span>
+          <span class="cmd-item-label">GitHub — @sangeeth98</span>
+          <span class="cmd-item-shortcut">↗</span>
+        </a>
+        <a href="https://www.linkedin.com/in/sangeethkumarvm/" target="_blank" rel="noopener noreferrer" class="cmd-item" data-action="link">
+          <span class="cmd-item-icon">💼</span>
+          <span class="cmd-item-label">LinkedIn — Sangeeth Kumar</span>
+          <span class="cmd-item-shortcut">↗</span>
+        </a>
+        <a href="https://github.com/sangeeth98/portfolio" target="_blank" rel="noopener noreferrer" class="cmd-item" data-action="link">
+          <span class="cmd-item-icon">⚡</span>
+          <span class="cmd-item-label">Portfolio Repository Source</span>
+          <span class="cmd-item-shortcut">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="cmd-footer">
+      <div class="cmd-footer-hints">
+        <span><kbd>↑</kbd> <kbd>↓</kbd> navigate</span>
+        <span><kbd>↵</kbd> select</span>
+        <span><kbd>ESC</kbd> close</span>
+      </div>
+      <div class="cmd-footer-tag">Sangeeth OKF Terminal</div>
+    </div>
+  </div>
+</dialog>
+
+<!-- Keyboard Shortcuts Help Modal -->
+<dialog id="shortcuts-dialog" class="cmd-dialog shortcuts-modal" aria-label="Keyboard Shortcuts">
+  <div class="cmd-container">
+    <div class="cmd-header">
+      <div class="shortcuts-header-title">
+        <span class="cmd-search-icon">⌨️</span>
+        <h3>Keyboard Shortcuts</h3>
+      </div>
+      <span class="cmd-badge"><kbd>ESC</kbd></span>
+    </div>
+
+    <div class="cmd-body shortcuts-body">
+      <div class="shortcut-row">
+        <span class="shortcut-desc">Open Command Palette</span>
+        <span class="shortcut-keys"><kbd>⌘</kbd> <kbd>K</kbd> or <kbd>Ctrl</kbd> <kbd>K</kbd></span>
+      </div>
+      <div class="shortcut-row">
+        <span class="shortcut-desc">Cycle Theme (System ↔ Light ↔ Dark)</span>
+        <span class="shortcut-keys"><kbd>T</kbd></span>
+      </div>
+      <div class="shortcut-row">
+        <span class="shortcut-desc">Jump to Section (Home, About, Exp, Projects, Contact)</span>
+        <span class="shortcut-keys"><kbd>1</kbd> — <kbd>5</kbd></span>
+      </div>
+      <div class="shortcut-row">
+        <span class="shortcut-desc">Show Keyboard Shortcuts Cheat Sheet</span>
+        <span class="shortcut-keys"><kbd>?</kbd></span>
+      </div>
+      <div class="shortcut-row">
+        <span class="shortcut-desc">Close Modal / Palette</span>
+        <span class="shortcut-keys"><kbd>ESC</kbd></span>
+      </div>
+    </div>
+
+    <div class="cmd-footer">
+      <button id="close-shortcuts-btn" class="btn btn-sm">Got it</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- Floating Quick Shortcut Trigger Badge -->
+<button id="cmd-trigger-btn" class="cmd-trigger-pill" aria-label="Open Command Palette (Ctrl+K)">
+  <span class="trigger-icon">⌘</span>
+  <span class="trigger-text">Commands</span>
+  <kbd class="trigger-kbd">⌘K</kbd>
+</button>
+
+<style>
+  /* Native Dialog Styling */
+  .cmd-dialog {
+    background: transparent;
+    border: none;
+    padding: 0;
+    max-width: 640px;
+    width: 90%;
+    margin: 10vh auto auto auto;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6), 0 0 40px var(--neon-green-glow);
+    color: var(--text-primary);
+    overflow: hidden;
+  }
+
+  .cmd-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: fadeIn 0.2s ease;
+  }
+
+  .cmd-container {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
+    overflow: hidden;
+  }
+
+  .cmd-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.4rem;
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--bg-secondary);
+  }
+
+  .cmd-search-icon {
+    font-size: 1.1rem;
+    color: var(--neon-green);
+    opacity: 0.8;
+  }
+
+  .cmd-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  .cmd-input::placeholder {
+    color: var(--text-dimmed);
+    font-size: 0.88rem;
+  }
+
+  .cmd-badge kbd,
+  .cmd-item-shortcut kbd,
+  .trigger-kbd,
+  .shortcut-keys kbd {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    background: var(--kbd-bg, #161b22);
+    border: 1px solid var(--kbd-border, rgba(0, 255, 65, 0.25));
+    color: var(--kbd-text, #00ff41);
+    padding: 0.15rem 0.45rem;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  .cmd-body {
+    padding: 0.8rem;
+    overflow-y: auto;
+    max-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .cmd-group-title {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-dimmed);
+    letter-spacing: 0.08em;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .cmd-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    transition: background 0.15s, transform 0.15s, color 0.15s;
+    border: 1px solid transparent;
+  }
+
+  .cmd-item:hover,
+  .cmd-item.selected {
+    background: var(--bg-tertiary);
+    border-color: var(--border-primary);
+    color: var(--neon-green);
+    transform: translateX(3px);
+  }
+
+  .cmd-item-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+    width: 20px;
+    text-align: center;
+  }
+
+  .cmd-item-label {
+    flex: 1;
+    font-weight: 500;
+  }
+
+  .cmd-item-badge {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    background: var(--neon-green-glow);
+    color: var(--neon-green);
+    border: 1px solid var(--border-primary);
+    padding: 0.1rem 0.45rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+  }
+
+  .cmd-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.4rem;
+    border-top: 1px solid var(--border-subtle);
+    background: var(--bg-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-dimmed);
+  }
+
+  .cmd-footer-hints {
+    display: flex;
+    gap: 0.9rem;
+  }
+
+  .cmd-footer-tag {
+    color: var(--neon-cyan);
+    opacity: 0.8;
+  }
+
+  /* Shortcuts Modal Specifics */
+  .shortcuts-modal {
+    max-width: 520px;
+  }
+
+  .shortcuts-header-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .shortcuts-header-title h3 {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .shortcuts-body {
+    padding: 1.2rem;
+    gap: 0.6rem;
+  }
+
+  .shortcut-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.55rem 0.4rem;
+    border-bottom: 1px dashed var(--border-subtle);
+    font-size: 0.88rem;
+  }
+
+  .shortcut-row:last-child {
+    border-bottom: none;
+  }
+
+  .shortcut-desc {
+    color: var(--text-secondary);
+  }
+
+  .shortcut-keys {
+    display: flex;
+    gap: 0.3rem;
+  }
+
+  /* Floating Trigger Button */
+  .cmd-trigger-pill {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-pill);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-neon);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .cmd-trigger-pill:hover {
+    transform: translateY(-2px) scale(1.02);
+    border-color: var(--neon-green);
+    box-shadow: 0 0 25px var(--neon-green-glow-strong);
+    color: var(--neon-green);
+  }
+
+  .trigger-icon {
+    color: var(--neon-green);
+    font-weight: 700;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @media (max-width: 640px) {
+    .cmd-dialog {
+      width: 95%;
+      margin-top: 5vh;
+    }
+    .cmd-footer-hints span:not(:last-child) {
+      display: none;
+    }
+    .cmd-trigger-pill {
+      bottom: 16px;
+      right: 16px;
+      padding: 0.4rem 0.8rem;
+    }
+    .trigger-text {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Command Palette & Keyboard shortcuts controller
+  const cmdDialog = document.getElementById('cmd-dialog') as HTMLDialogElement | null;
+  const shortcutsDialog = document.getElementById('shortcuts-dialog') as HTMLDialogElement | null;
+  const cmdInput = document.getElementById('cmd-input') as HTMLInputElement | null;
+  const cmdTriggerBtn = document.getElementById('cmd-trigger-btn');
+  const closeShortcutsBtn = document.getElementById('close-shortcuts-btn');
+  const cmdItems = document.querySelectorAll<HTMLElement>('.cmd-item');
+
+  function openPalette() {
+    if (!cmdDialog) return;
+    shortcutsDialog?.close();
+    cmdDialog.showModal();
+    if (cmdInput) {
+      cmdInput.value = '';
+      cmdInput.focus();
+      filterCommands('');
+    }
+  }
+
+  function closePalette() {
+    cmdDialog?.close();
+  }
+
+  function openShortcuts() {
+    if (!shortcutsDialog) return;
+    cmdDialog?.close();
+    shortcutsDialog.showModal();
+  }
+
+  function closeShortcuts() {
+    shortcutsDialog?.close();
+  }
+
+  // Trigger button
+  cmdTriggerBtn?.addEventListener('click', openPalette);
+  closeShortcutsBtn?.addEventListener('click', closeShortcuts);
+
+  // Light dismiss on backdrop click (Modern Web standard)
+  cmdDialog?.addEventListener('click', (e) => {
+    if (e.target === cmdDialog) {
+      closePalette();
+    }
+  });
+
+  shortcutsDialog?.addEventListener('click', (e) => {
+    if (e.target === shortcutsDialog) {
+      closeShortcuts();
+    }
+  });
+
+  // Global keyboard shortcuts
+  window.addEventListener('keydown', (e: KeyboardEvent) => {
+    // Ignore key combos when focused in input/textarea (unless it's Esc)
+    const activeEl = document.activeElement;
+    const isInputFocused = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA');
+
+    // Cmd+K or Ctrl+K
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      if (cmdDialog?.open) {
+        closePalette();
+      } else {
+        openPalette();
+      }
+      return;
+    }
+
+    // Escape closes modals
+    if (e.key === 'Escape') {
+      if (cmdDialog?.open) closePalette();
+      if (shortcutsDialog?.open) closeShortcuts();
+      return;
+    }
+
+    if (!isInputFocused) {
+      // ? opens shortcuts modal
+      if (e.key === '?') {
+        e.preventDefault();
+        openShortcuts();
+        return;
+      }
+
+      // T cycles theme
+      if (e.key === 't' || e.key === 'T') {
+        e.preventDefault();
+        cycleTheme();
+        return;
+      }
+
+      // 1-5 jump to sections
+      const sectionMap: Record<string, string> = {
+        '1': '#home',
+        '2': '#about',
+        '3': '#experience',
+        '4': '#projects',
+        '5': '#contact'
+      };
+
+      if (sectionMap[e.key]) {
+        e.preventDefault();
+        const target = document.querySelector(sectionMap[e.key]);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+        return;
+      }
+    }
+  });
+
+  // Filter commands based on input
+  function filterCommands(query: string) {
+    const q = query.toLowerCase().trim();
+    let hasSelected = false;
+
+    cmdItems.forEach((item) => {
+      const label = (item.querySelector('.cmd-item-label')?.textContent || '').toLowerCase();
+      const group = item.closest('.cmd-group');
+      const matches = !q || label.includes(q);
+
+      item.style.display = matches ? 'flex' : 'none';
+      item.classList.remove('selected');
+
+      if (matches && !hasSelected) {
+        item.classList.add('selected');
+        hasSelected = true;
+      }
+    });
+
+    // Hide empty groups
+    document.querySelectorAll<HTMLElement>('.cmd-group').forEach((group) => {
+      const visibleItems = group.querySelectorAll<HTMLElement>('.cmd-item[style*="display: flex"]');
+      group.style.display = visibleItems.length > 0 || !q ? 'block' : 'none';
+    });
+  }
+
+  cmdInput?.addEventListener('input', (e) => {
+    filterCommands((e.target as HTMLInputElement).value);
+  });
+
+  // Navigate selection with arrow keys inside dialog
+  cmdDialog?.addEventListener('keydown', (e: KeyboardEvent) => {
+    const visibleItems = Array.from(document.querySelectorAll<HTMLElement>('.cmd-item')).filter(
+      (item) => item.style.display !== 'none'
+    );
+
+    if (visibleItems.length === 0) return;
+
+    let currentIndex = visibleItems.findIndex((item) => item.classList.contains('selected'));
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (currentIndex !== -1) visibleItems[currentIndex].classList.remove('selected');
+      const nextIndex = (currentIndex + 1) % visibleItems.length;
+      visibleItems[nextIndex].classList.add('selected');
+      visibleItems[nextIndex].scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (currentIndex !== -1) visibleItems[currentIndex].classList.remove('selected');
+      const prevIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+      visibleItems[prevIndex].classList.add('selected');
+      visibleItems[prevIndex].scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      const selected = visibleItems.find((item) => item.classList.contains('selected')) || visibleItems[0];
+      if (selected) {
+        executeCommand(selected);
+      }
+    }
+  });
+
+  // Item click handler
+  cmdItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      executeCommand(item);
+    });
+  });
+
+  function executeCommand(item: HTMLElement) {
+    const action = item.dataset.action;
+
+    if (action === 'navigate') {
+      const targetId = item.dataset.target;
+      closePalette();
+      if (targetId) {
+        const el = document.querySelector(targetId);
+        el?.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else if (action === 'theme') {
+      const targetTheme = item.dataset.theme as 'system' | 'light' | 'dark';
+      setTheme(targetTheme);
+      closePalette();
+    } else if (action === 'link') {
+      const link = item as HTMLAnchorElement;
+      if (link.href) {
+        closePalette();
+        window.open(link.href, link.target || '_self');
+      }
+    }
+  }
+
+  // Theme helper
+  function setTheme(theme: 'system' | 'light' | 'dark') {
+    localStorage.setItem('theme', theme);
+    applyTheme(theme);
+  }
+
+  function cycleTheme() {
+    const current = (localStorage.getItem('theme') || 'system') as 'system' | 'light' | 'dark';
+    const nextTheme: Record<string, 'system' | 'light' | 'dark'> = {
+      system: 'light',
+      light: 'dark',
+      dark: 'system'
+    };
+    setTheme(nextTheme[current] || 'system');
+  }
+
+  function syncFavicon(isDark: boolean) {
+    try {
+      const bg = isDark ? '%230a0e17' : '%23f8fafc';
+      const border = isDark ? '%2300ff41' : '%23059669';
+      const prompt = isDark ? '%2300ff41' : '%23059669';
+      const cursor = isDark ? '%2300d4ff' : '%230284c7';
+      const svgData = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='2' y='2' width='60' height='60' rx='14' fill='${bg}' stroke='${border}' stroke-width='4'/%3E%3Cpath d='M18 20 L30 32 L18 44' fill='none' stroke='${prompt}' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='36' y1='44' x2='48' y2='44' stroke='${cursor}' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E`;
+      const link = document.getElementById('site-favicon') || document.querySelector("link[rel*='icon']");
+      if (link) {
+        link.setAttribute('href', svgData);
+      }
+    } catch (e) {}
+  }
+
+  function applyTheme(theme: 'system' | 'light' | 'dark') {
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = theme === 'dark' || (theme === 'system' && systemDark);
+
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+
+    document.documentElement.setAttribute('data-theme-setting', theme);
+    syncFavicon(isDark);
+
+    // Sync navbar segmented controls if present
+    document.querySelectorAll<HTMLElement>('[data-theme-choice]').forEach((btn) => {
+      btn.classList.toggle('active', btn.dataset.themeChoice === theme);
+    });
+  }
+
+  // Listen to OS scheme changes if on system
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    const current = localStorage.getItem('theme') || 'system';
+    if (current === 'system') {
+      applyTheme('system');
+    }
+  });
+
+  // Initial sync
+  const initialTheme = (localStorage.getItem('theme') || 'system') as 'system' | 'light' | 'dark';
+  applyTheme(initialTheme);
+</script>

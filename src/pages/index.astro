@@ -7,7 +7,7 @@ import Projects from '../components/Projects.astro';
 import Contact from '../components/Contact.astro';
 ---
 
-<Layout title="Sangeeth | Software Engineer">
+<Layout title="Sangeeth Kumar | Senior Backend Engineer & AI Systems Architect">
 	<!-- Navbar Header -->
 	<header class="navbar">
 		<a href="#home" class="logo">
@@ -35,11 +35,29 @@ import Contact from '../components/Contact.astro';
 				
 				<span class="nav-divider" aria-hidden="true"></span>
 				
-				<button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
-					<svg id="theme-svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-						<path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+				<!-- Single Icon Theme Toggle -->
+				<button id="theme-toggle-btn" class="theme-toggle-btn" type="button" aria-label="Toggle theme" title="Toggle theme (T)">
+					<!-- Sun icon (shown in dark mode, click for light) -->
+					<svg class="theme-icon icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<circle cx="12" cy="12" r="4"></circle>
+						<path d="M12 2v2"></path>
+						<path d="M12 20v2"></path>
+						<path d="M4.93 4.93l1.41 1.41"></path>
+						<path d="M17.66 17.66l1.41 1.41"></path>
+						<path d="M2 12h2"></path>
+						<path d="M20 12h2"></path>
+						<path d="M6.34 17.66l-1.41 1.41"></path>
+						<path d="M19.07 4.93l-1.41 1.41"></path>
 					</svg>
-					<span id="theme-text">neon</span>
+					<!-- Moon icon (shown in light mode, click for dark) -->
+					<svg class="theme-icon icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+					</svg>
+				</button>
+
+				<button id="nav-cmd-btn" class="nav-cmd-btn" aria-label="Command palette (⌘K)" title="Press ⌘K or click to search">
+					<span class="cmd-icon">⌘</span>
+					<kbd>K</kbd>
 				</button>
 			</div>
 		</nav>
@@ -56,26 +74,68 @@ import Contact from '../components/Contact.astro';
 </Layout>
 
 <script>
-	// Theme toggle: neon (dark) ↔ dim (lighter dark)
-	const themeToggle = document.getElementById('theme-toggle');
-	const themeText = document.getElementById('theme-text');
+	// Single icon theme toggle controller
+	const themeToggleBtn = document.getElementById('theme-toggle-btn');
+	const navCmdBtn = document.getElementById('nav-cmd-btn');
 
-	function updateToggleButtonState() {
-		const isDim = document.documentElement.classList.contains('dim-mode');
-		if (themeText) {
-			themeText.textContent = isDim ? 'dim' : 'neon';
-		}
+	function getStoredTheme(): 'light' | 'dark' {
+		const saved = localStorage.getItem('theme');
+		if (saved === 'light' || saved === 'dark') return saved;
+		const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		return systemDark ? 'dark' : 'light';
 	}
 
-	// Initial sync
-	updateToggleButtonState();
+	function syncFavicon(isDark: boolean) {
+		try {
+			const bg = isDark ? '%230a0e17' : '%23f8fafc';
+			const border = isDark ? '%2300ff41' : '%23059669';
+			const prompt = isDark ? '%2300ff41' : '%23059669';
+			const cursor = isDark ? '%2300d4ff' : '%230284c7';
+			const svgData = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='2' y='2' width='60' height='60' rx='14' fill='${bg}' stroke='${border}' stroke-width='4'/%3E%3Cpath d='M18 20 L30 32 L18 44' fill='none' stroke='${prompt}' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='36' y1='44' x2='48' y2='44' stroke='${cursor}' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E`;
+			const link = document.getElementById('site-favicon') || document.querySelector("link[rel*='icon']");
+			if (link) {
+				link.setAttribute('href', svgData);
+			}
+		} catch (e) {}
+	}
 
-	themeToggle?.addEventListener('click', () => {
-		const root = document.documentElement;
-		root.classList.toggle('dim-mode');
-		
-		const currentTheme = root.classList.contains('dim-mode') ? 'dim' : 'neon';
-		localStorage.setItem('theme', currentTheme);
-		updateToggleButtonState();
+	function applyTheme(theme: 'light' | 'dark') {
+		const isDark = theme === 'dark';
+
+		if (isDark) {
+			document.documentElement.classList.add('dark');
+			document.documentElement.classList.remove('light');
+			document.documentElement.setAttribute('data-theme', 'dark');
+		} else {
+			document.documentElement.classList.add('light');
+			document.documentElement.classList.remove('dark');
+			document.documentElement.setAttribute('data-theme', 'light');
+		}
+
+		document.documentElement.setAttribute('data-theme-setting', theme);
+		syncFavicon(isDark);
+	}
+
+	themeToggleBtn?.addEventListener('click', () => {
+		const isDark = document.documentElement.classList.contains('dark');
+		const nextTheme = isDark ? 'light' : 'dark';
+		localStorage.setItem('theme', nextTheme);
+		applyTheme(nextTheme);
 	});
+
+	// Listen for OS color-scheme changes if user hasn't chosen a preference
+	window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+		if (!localStorage.getItem('theme')) {
+			applyTheme(e.matches ? 'dark' : 'light');
+		}
+	});
+
+	navCmdBtn?.addEventListener('click', () => {
+		const cmdDialog = document.getElementById('cmd-dialog') as HTMLDialogElement | null;
+		const cmdInput = document.getElementById('cmd-input') as HTMLInputElement | null;
+		cmdDialog?.showModal();
+		cmdInput?.focus();
+	});
+
+	applyTheme(getStoredTheme());
 </script>

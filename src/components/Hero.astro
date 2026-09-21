@@ -18,9 +18,9 @@ import MatrixRain from './MatrixRain.astro';
       <span class="hero-name">Sangeeth<span class="cursor-blink"></span></span>
     </h1>
     <p class="hero-subtitle">
-      Backend engineer & AI systems builder with ~6 years of experience crafting
-      scalable data pipelines, agentic architectures, and developer tools.
-      I build things that think.
+      Senior Backend Engineer & AI Systems Architect with ~6 years of experience engineering 
+      high-throughput query engines, enterprise data platforms, and agentic systems.
+      I build scalable systems that think.
     </p>
     <div class="hero-actions">
       <a href="#projects" class="btn">ls ./projects</a>
@@ -37,11 +37,11 @@ import MatrixRain from './MatrixRain.astro';
       </div>
       <div class="terminal-body">
         <div class="terminal-line"><span class="prompt">❯</span> <span class="cmd">whoami</span></div>
-        <div class="terminal-line output">sangeeth — software engineer</div>
+        <div class="terminal-line output">sangeeth — senior backend & ai engineer</div>
         <div class="terminal-line"><span class="prompt">❯</span> <span class="cmd">cat stack.yml</span></div>
-        <div class="terminal-line output">languages: [Python, TypeScript, SQL]</div>
-        <div class="terminal-line output">focus: [backend, agentic-ai, data-pipelines]</div>
-        <div class="terminal-line output">tools: [FastAPI, Astro, Docker, uv]</div>
+        <div class="terminal-line output">languages: [Python, Java, SQL, TypeScript]</div>
+        <div class="terminal-line output">focus: [backend-platforms, snowflake-udfs, agentic-mcp]</div>
+        <div class="terminal-line output">tools: [Spring Boot, FastMCP, Docker, uv, Jenkins]</div>
         <div class="terminal-line"><span class="prompt">❯</span> <span class="cmd blink-cursor">_</span></div>
       </div>
     </div>
@@ -56,9 +56,9 @@ import MatrixRain from './MatrixRain.astro';
     align-items: center;
     justify-content: center;
     padding-top: 80px;
-    padding-bottom: 0;
+    padding-bottom: var(--space-8);
     overflow: hidden;
-    background: radial-gradient(ellipse at 50% 0%, rgba(0, 255, 65, 0.04) 0%, transparent 60%),
+    background: radial-gradient(ellipse at 50% 0%, var(--neon-green-glow) 0%, transparent 60%),
                 var(--bg-primary);
   }
 
@@ -86,7 +86,7 @@ import MatrixRain from './MatrixRain.astro';
     align-items: center;
     gap: 0.5rem;
     padding: 0.35rem 1rem;
-    background: rgba(0, 255, 65, 0.06);
+    background: var(--bg-card);
     border: 1px solid var(--border-primary);
     border-radius: var(--radius-sm);
     font-family: var(--font-mono);
@@ -151,11 +151,13 @@ import MatrixRain from './MatrixRain.astro';
     max-width: 480px;
     margin: 0 auto;
     text-align: left;
-    background: rgba(6, 8, 16, 0.9);
+    background: var(--bg-card);
     border: 1px solid var(--border-primary);
     border-radius: var(--radius-md);
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 255, 65, 0.05);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
 
   .terminal-dots {
@@ -163,8 +165,8 @@ import MatrixRain from './MatrixRain.astro';
     align-items: center;
     gap: 6px;
     padding: 10px 14px;
-    background: rgba(255, 255, 255, 0.03);
-    border-bottom: 1px solid var(--border-primary);
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .dot {
@@ -206,6 +208,51 @@ import MatrixRain from './MatrixRain.astro';
   .terminal-line.output {
     color: var(--text-secondary);
     padding-left: 1.2rem;
+  }
+
+  /* Light mode terminal styling — authentic dark code box on light canvas */
+  :global(html.light) .hero-terminal {
+    background: #0d1117;
+    border-color: #30363d;
+    box-shadow: 0 20px 48px -10px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(15, 23, 42, 0.05);
+  }
+
+  :global(html.light) .terminal-dots {
+    background: #161b22;
+    border-bottom-color: #30363d;
+  }
+
+  :global(html.light) .terminal-title {
+    color: #8b949e;
+  }
+
+  :global(html.light) .terminal-line {
+    color: #e6edf3;
+  }
+
+  :global(html.light) .terminal-line .prompt {
+    color: #3fb950;
+  }
+
+  :global(html.light) .terminal-line .cmd {
+    color: #58a6ff;
+  }
+
+  :global(html.light) .terminal-line.output {
+    color: #8b949e;
+  }
+
+  :global(html.light) .hero-name {
+    background: linear-gradient(135deg, #059669 0%, #0284c7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  :global(html.light) .intro-badge {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   }
 
   .blink-cursor {

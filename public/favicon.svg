@@ -1,4 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#e56a42" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 1 9.8a7 7 0 0 1-9 8.2z"/>
-  <path d="M9 22v-4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    :root {
+      --bg: #0a0e17;
+      --border: #00ff41;
+      --prompt: #00ff41;
+      --cursor: #00d4ff;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --border: #059669;
+        --prompt: #059669;
+        --cursor: #0284c7;
+      }
+    }
+  </style>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="var(--bg)" stroke="var(--border)" stroke-width="4"/>
+  <!-- Terminal Prompt > -->
+  <path d="M18 20 L30 32 L18 44" fill="none" stroke="var(--prompt)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Cursor _ -->
+  <line x1="36" y1="44" x2="48" y2="44" stroke="var(--cursor)" stroke-width="5" stroke-linecap="round"/>
 </svg>
